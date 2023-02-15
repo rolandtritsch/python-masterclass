@@ -1,2 +1,1 @@
-# python-masterclasee
-All the code from the python masterclass
+# All the code from the python masterclass
