@@ -9,18 +9,34 @@ import pygame
 class Bubble(Thread):
     """The Bubble-Sort Visualizer."""
 
+    def __show__(self, bars):
+        """Draw all the bars."""
+        for i in range(len(bars)):
+            pygame.draw.rect(
+                self.window,
+                Constants.barColor,
+                (
+                    Constants.xPos + Constants.barGap * i,
+                    Constants.yPos,
+                    Constants.barWidth,
+                    bars[i]
+                )
+            )
+
     def __init__(self):
         """Return an initialized visualizer."""
-        self.window = pygame.display.window(
-            Constants.windowHeight, Constants.windowWidth
+        self.window = pygame.display.set_mode(
+            (Constants.windowHeight, Constants.windowWidth)
         )
-        pygame.display.caption(Constants.caption)
+        pygame.display.set_caption(Constants.caption)
 
-    def run():
+    def run(self):
         """Run the visualizer in a thread."""
-        Bubble()
+        bars = [90, 80, 70, 60, 50, 40, 30, 20, 10]
+        self.__show__(bars)
 
 
 pygame.init()
 
-Bubble.start()
+visualizer = Bubble()
+visualizer.start()
