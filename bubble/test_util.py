@@ -6,6 +6,7 @@ import util
 
 def test_randlist():
     """Testing randlist."""
-    length = 10
-    list = util.randlist(length, 30)
-    assert len(list) == length
+    number = 20
+    size = 10
+    scale = 5
+    assert len(util.randlist(number, size, scale)) == number

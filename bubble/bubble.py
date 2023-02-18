@@ -20,8 +20,8 @@ class Bubble(Thread):
                 self.window,
                 Constants.barColor,
                 (
-                    Constants.xPos + Constants.barGap * i,
-                    Constants.yPos,
+                    Constants.xMargin + ((Constants.barWidth + Constants.barGap) * i),  # noqa: E501
+                    Constants.yMargin,
                     Constants.barWidth,
                     bars[i]
                 )
@@ -33,7 +33,7 @@ class Bubble(Thread):
         self.initial = initial
 
         self.window = pygame.display.set_mode(
-            (Constants.windowHeight, Constants.windowWidth)
+            (Constants.windowHeight(), Constants.windowWidth())
         )
         pygame.display.set_caption(Constants.caption)
 
@@ -54,7 +54,13 @@ logging.info("Init pygame ...")
 pygame.init()
 
 logging.info("Starting visualizer ...")
-visualizer = Bubble(util.randlist(Constants.length, Constants.upper))
+visualizer = Bubble(
+    util.randlist(
+        Constants.numberOfBars,
+        Constants.sizeOfBars,
+        Constants.scaleOfBars
+    )
+)
 visualizer.start()
 visualizer.join()
 logging.info("... done!")

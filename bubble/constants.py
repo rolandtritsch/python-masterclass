@@ -9,15 +9,30 @@ class Constants:
     __red__ = (255, 0, 0)
     __white__ = (255, 255, 255)
     barColor = __red__
-    barGap = 30
-    barWidth = 20
+    barGap = 5
+    barWidth = 10
     caption = "BubbleSort Visualizer"
-    delay = 1000
-    length = 16
-    scale = 10
-    upper = 30
+    delay = 500
+    numberOfBars = 50
+    scaleOfBars = 10
+    sizeOfBars = 40
     windowFillColor = __black__
-    windowHeight = 500
-    windowWidth = 400
-    xPos = 20
-    yPos = 20
+    xMargin = 10
+    yMargin = 10
+
+    @classmethod
+    def windowHeight(cls):
+        """Return window height."""
+        return (
+            (cls.xMargin * 2) +
+            (cls.numberOfBars * cls.barWidth) +
+            ((cls.numberOfBars-1) * cls.barGap)
+            )
+
+    @classmethod
+    def windowWidth(cls):
+        """Return window width."""
+        return (
+            (cls.yMargin * 2) +
+            (cls.sizeOfBars * cls.scaleOfBars)
+            )
