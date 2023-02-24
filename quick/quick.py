@@ -19,7 +19,6 @@ RED = (255, 0, 0)
 # Set the width and height of the screen [width, height]
 WIDTH = 700
 HEIGHT = 500
-FPS = 60
 
 # Initialize pygame
 pygame.init()
@@ -27,7 +26,6 @@ pygame.init()
 # Set up the screen
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Quick-Sort Visualization")
-clock = pygame.time.Clock()
 
 # Function to draw the array on the screen
 def draw_array(arr, left_index, right_index, current_index):    
@@ -60,7 +58,7 @@ def quicksort(arr, left, right):
             j -= 1
         else:
             draw_array(arr, left, right, i)
-        clock.tick(FPS)
+        time.sleep(1)
     quicksort(arr, left, j)
     quicksort(arr, i, right)
 
