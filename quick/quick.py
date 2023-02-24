@@ -11,19 +11,8 @@ import pygame
 import random
 import util
 
-# Initialize pygame
-pygame.init()
 
-# Set up the screen
-screen = pygame.display.set_mode(
-    (Constants.WIDTH, Constants.HEIGHT)
-)
-pygame.display.set_caption(
-    Constants.CAPTION
-)
-
-
-def draw_array(arr, left_index, right_index, current_index):
+def draw_array(screen, arr, left_index, right_index, current_index):
     """Draw the array on the screen."""
     screen.fill(Constants.WHITE)
     bar_width = Constants.WIDTH // len(arr)
@@ -41,7 +30,7 @@ def draw_array(arr, left_index, right_index, current_index):
     pygame.display.update()
 
 
-def quicksort(arr, left, right):
+def quicksort(screen, arr, left, right):
     """Sort the array (and draw it, while sorting it)."""
     if left >= right:
         return
@@ -54,19 +43,30 @@ def quicksort(arr, left, right):
             j -= 1
         if i <= j:
             arr[i], arr[j] = arr[j], arr[i]
-            draw_array(arr, left, right, j)
+            draw_array(screen, arr, left, right, j)
             i += 1
             j -= 1
         else:
-            draw_array(arr, left, right, i)
+            draw_array(screen, arr, left, right, i)
         pygame.time.delay(1000)
-    quicksort(arr, left, j)
-    quicksort(arr, i, right)
+    quicksort(screen, arr, left, j)
+    quicksort(screen, arr, i, right)
 
+
+# Initialize pygame
+pygame.init()
+
+# Set up the screen
+screen = pygame.display.set_mode(
+    (Constants.WIDTH, Constants.HEIGHT)
+)
+pygame.display.set_caption(
+    Constants.CAPTION
+)
 
 # Example usage
 arr = util.randlist(7, 10, 50)
-quicksort(arr, 0, len(arr) - 1)
+quicksort(screen, arr, 0, len(arr) - 1)
 
 # Quit pygame
 pygame.time.delay(3000)
