@@ -63,4 +63,8 @@ visualizer = Bubble(
 )
 visualizer.start()
 visualizer.join()
+
+pygame.time.delay(1000)
+pygame.quit()
+
 logging.info("... done!")
