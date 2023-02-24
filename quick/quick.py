@@ -8,6 +8,7 @@ This code was generate by ChatGPT and then
 
 import pygame
 import random
+import time
 
 # Define some colors
 BLACK = (0, 0, 0)
@@ -68,4 +69,5 @@ arr = [3, 7, 1, 2, 8, 4, 5]
 quicksort(arr, 0, len(arr) - 1)
 
 # Quit pygame
+time.sleep(3)
 pygame.quit()
