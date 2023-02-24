@@ -9,7 +9,7 @@ This code was generate by ChatGPT and then
 from constants import Constants
 import pygame
 import random
-import time
+import util
 
 # Initialize pygame
 pygame.init()
@@ -59,15 +59,15 @@ def quicksort(arr, left, right):
             j -= 1
         else:
             draw_array(arr, left, right, i)
-        time.sleep(1)
+        pygame.time.delay(1000)
     quicksort(arr, left, j)
     quicksort(arr, i, right)
 
 
 # Example usage
-arr = [3, 7, 1, 2, 8, 4, 5]
+arr = util.randlist(7, 10, 50)
 quicksort(arr, 0, len(arr) - 1)
 
 # Quit pygame
-time.sleep(3)
+pygame.time.delay(3000)
 pygame.quit()
