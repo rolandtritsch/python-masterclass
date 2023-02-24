@@ -6,42 +6,43 @@ This code was generate by ChatGPT and then
 (just) polished/refactored by me.
 """
 
+from constants import Constants
 import pygame
 import random
 import time
-
-# Define some colors
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-GREEN = (0, 255, 0)
-RED = (255, 0, 0)
-
-# Set the width and height of the screen [width, height]
-WIDTH = 700
-HEIGHT = 500
 
 # Initialize pygame
 pygame.init()
 
 # Set up the screen
-screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption("Quick-Sort Visualization")
+screen = pygame.display.set_mode(
+    (Constants.WIDTH, Constants.HEIGHT)
+)
+pygame.display.set_caption(
+    Constants.CAPTION
+)
 
-# Function to draw the array on the screen
-def draw_array(arr, left_index, right_index, current_index):    
-    screen.fill(WHITE)
-    bar_width = WIDTH // len(arr)
+
+def draw_array(arr, left_index, right_index, current_index):
+    """Draw the array on the screen."""
+    screen.fill(Constants.WHITE)
+    bar_width = Constants.WIDTH // len(arr)
     for i, value in enumerate(arr):
-        color = BLACK
+        color = Constants.BLACK
         if i == current_index:
-            color = GREEN
+            color = Constants.GREEN
         elif i < left_index or i > right_index:
-            color = RED
-        pygame.draw.rect(screen, color, (i * bar_width, HEIGHT - value, bar_width, value))
+            color = Constants.RED
+        pygame.draw.rect(
+            screen,
+            color,
+            (i * bar_width, Constants.HEIGHT - value, bar_width, value)
+        )
     pygame.display.update()
 
-# Quick-Sort Algorithm
+
 def quicksort(arr, left, right):
+    """Sort the array (and draw it, while sorting it)."""
     if left >= right:
         return
     pivot = arr[random.randint(left, right)]
@@ -61,6 +62,7 @@ def quicksort(arr, left, right):
         time.sleep(1)
     quicksort(arr, left, j)
     quicksort(arr, i, right)
+
 
 # Example usage
 arr = [3, 7, 1, 2, 8, 4, 5]
