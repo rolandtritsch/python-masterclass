@@ -4,6 +4,16 @@ A quick-sort visualizer (using matplot).
 
 This code was generate by ChatGPT and then
 (just) polished/refactored by me.
+
+The main things that were/are missing are ...
+
+* no tests
+* no logging
+* no (good) design (modularisation)
+* no taste (not elegant/beautiful)
+* not working (plt.clf() was missing)
+
+The generated code is not production quality.
 """
 
 import matplotlib.pyplot as plt
@@ -36,7 +46,7 @@ def draw(arr):
     plt.clf()
     plt.bar(range(len(arr)), arr)
     plt.show(block=False)
-    plt.pause(0.2)
+    plt.pause(0.1)
 
 
 # Example usage
