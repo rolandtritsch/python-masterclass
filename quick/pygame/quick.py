@@ -1,6 +1,6 @@
 # quick.py
 """
-A quick-sort visualizer.
+A quick-sort visualizer (using pygame).
 
 This code was generate by ChatGPT and then
 (just) polished/refactored by me.
