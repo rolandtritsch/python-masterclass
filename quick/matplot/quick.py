@@ -26,12 +26,18 @@ def quicksort(arr, left, right):
             arr[i], arr[j] = arr[j], arr[i]
             i += 1
             j -= 1
-        plt.clf()
-        plt.bar(range(len(arr)), arr)
-        plt.show(block=False)
-        plt.pause(0.2)
+        draw(arr)
     quicksort(arr, left, j)
     quicksort(arr, i, right)
+
+
+def draw(arr):
+    """Draw the given array."""
+    plt.clf()
+    plt.bar(range(len(arr)), arr)
+    plt.show(block=False)
+    plt.pause(0.2)
+
 
 # Example usage
 arr = util.randlist(100, 100, 1)
